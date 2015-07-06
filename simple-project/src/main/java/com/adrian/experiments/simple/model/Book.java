@@ -20,6 +20,12 @@ public class Book {
 	/** The number. */
 	private  String number;
 	
+	public Book(final String title, final Float price, final String description) {
+		this.title = title;
+		this.price = price;
+		this.description = description;
+	}
+	
 	/**
 	 * @return the title
 	 */

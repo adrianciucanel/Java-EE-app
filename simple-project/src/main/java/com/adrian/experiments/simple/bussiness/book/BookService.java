@@ -2,6 +2,9 @@ package com.adrian.experiments.simple.bussiness.book;
 
 import javax.inject.Inject;
 
+import com.adrian.experiments.simple.infrastructure.logging.Loggable;
+import com.adrian.experiments.simple.model.Book;
+
 /**
  * Handle CRUD operations regarding books.
  * @author aciucanel
@@ -10,9 +13,16 @@ import javax.inject.Inject;
 public class BookService {
 
 	/** Number generator for books. */
-	@Inject
+	@Inject @ThirteenDigits
 	private NumberGenerator numberGenerator;
 
+	@Loggable
+	public Book createBook(final String title, final Float price, final String description) {
+		final Book book = new Book(title, price, description);
+		book.setNumber(numberGenerator.generateNumber());
+		return book;
+	}
+	
 	/**
 	 * Get the number generator.
 	 * @return the number generator for books.
