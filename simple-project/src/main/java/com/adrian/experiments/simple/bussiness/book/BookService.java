@@ -1,5 +1,7 @@
 package com.adrian.experiments.simple.bussiness.book;
 
+import javax.inject.Inject;
+
 /**
  * Handle CRUD operations regarding books.
  * @author aciucanel
@@ -8,6 +10,7 @@ package com.adrian.experiments.simple.bussiness.book;
 public class BookService {
 
 	/** Number generator for books. */
+	@Inject
 	private NumberGenerator numberGenerator;
 
 	/**
