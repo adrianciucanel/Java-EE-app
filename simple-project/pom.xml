@@ -11,25 +11,31 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+  	<!-- Dependencies versions -->
+  	<version.junit>4.12</version.junit>
+    <version.cdi>1.2</version.cdi>
+    
+    <!-- Plugins versions -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <wildfly.plugin.version>1.1.0.Alpha2</wildfly.plugin.version>
     <version.war.plugin>2.1.1</version.war.plugin>
+    <version.failsafe.plugin>2.18.1</version.failsafe.plugin>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>${version.junit}</version>
       <scope>test</scope>
     </dependency>
-    
-   	<dependency>
-	   	<groupId>javax.enterprise</groupId>
-	   	<artifactId>cdi-api</artifactId>
-	   	<version>1.2</version>
-	   	<scope>provided</scope>
-   	</dependency>
+
+   	
+   	 <dependency>      
+   	 	<groupId>org.jboss.weld</groupId>      
+   	 	<artifactId>weld-se</artifactId>      
+   	 	<version>1.0.1-Final</version>  
+   	 </dependency>
   </dependencies>
   
   <build>
@@ -44,12 +50,28 @@
   			<version>${wildfly.plugin.version}</version>
   		</plugin>
   		
+  		<!-- Configure project to run without web.xml -->
   		<plugin>
   			<artifactId>maven-war-plugin</artifactId>
   			<version>${version.war.plugin}</version>
   			<configuration>
   				<failOnMissingWebXml>false</failOnMissingWebXml>
   			</configuration>
+  		</plugin>
+  		
+  		<!-- Used to run integration tests -->
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-failsafe-plugin</artifactId>
+  			<version>${version.failsafe.plugin}</version>
+  			<executions>
+  				<execution>
+  					<goals>
+  						<goal>integration-test</goal>
+  						<goal>verify</goal>
+  					</goals>
+  				</execution>
+  			</executions>
   		</plugin>
   	</plugins>
   </build>

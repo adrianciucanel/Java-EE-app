@@ -10,13 +10,13 @@ import com.adrian.experiments.simple.model.Book;
  * @author aciucanel
  *
  */
+@Loggable
 public class BookService {
 
 	/** Number generator for books. */
 	@Inject @ThirteenDigits
 	private NumberGenerator numberGenerator;
 
-	@Loggable
 	public Book createBook(final String title, final Float price, final String description) {
 		final Book book = new Book(title, price, description);
 		book.setNumber(numberGenerator.generateNumber());

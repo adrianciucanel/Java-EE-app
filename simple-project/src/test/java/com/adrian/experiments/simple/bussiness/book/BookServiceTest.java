@@ -7,4 +7,5 @@ package com.adrian.experiments.simple.bussiness.book;
  */
 public class BookServiceTest {
 
+	
 }
