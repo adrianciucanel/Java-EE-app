@@ -1,5 +1,6 @@
 package com.adrian.experiments.simple.bussiness.book;
 
+import java.util.Random;
 import java.util.logging.Logger;
 
 import javax.enterprise.inject.Alternative;
@@ -21,7 +22,9 @@ public class MockGenerator implements NumberGenerator {
 	
 	@Loggable
 	public String generateNumber() {
-		return "Mock";
+		String number = "MOCK" + Math.abs(new Random().nextInt());
+		logger.info("Generate Mock : " + number);
+		return number;
 	}
 
 	/**

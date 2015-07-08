@@ -14,7 +14,8 @@ import com.adrian.experiments.simple.model.Book;
 public class BookService {
 
 	/** Number generator for books. */
-	@Inject @ThirteenDigits
+	@Inject
+	@ThirteenDigits
 	private NumberGenerator numberGenerator;
 
 	public Book createBook(final String title, final Float price, final String description) {
